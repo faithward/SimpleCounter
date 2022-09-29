@@ -12,7 +12,7 @@ const Counter = () => {
   let tensDigit = Math.floor((seconds / 10) % 10);
   let hundredsDigit = Math.floor((seconds / 100) % 10);
   let thousandsDigit = Math.floor((seconds / 1000) % 10);
-  const [buttonVariable, setButtonVariable] = useState(0);
+  //const [buttonVariable, setButtonVariable] = useState(0);
 
   //useEffect(() => {}, []); // empty useEffect hook
 
@@ -20,15 +20,21 @@ const Counter = () => {
     setTimeout(
         () => {
             setSeconds((seconds) => seconds + 1); //inner function
-            console.log("One second has passed");
+            //console.log("One second has passed");
         }, 
     1000);
-  }, [buttonVariable]);
+  });
 
-  const clickHandler = () => {
+  //to make the webapp operate via button, put [buttonVariable] as the second parameter for useEffect
+  //the clickHandler function is below
+
+  /* const clickHandler = () => {
     console.log("We are inside the handler");
     setButtonVariable((buttonVariable) => buttonVariable + 1);
-  }
+  } */ 
+
+  //to implement button, put the below code in the return section between the bottom two </div>s
+  //<button onClick={clickHandler}>Click to trigger useEffect</button>
 
   return (
     <div>
@@ -43,7 +49,6 @@ const Counter = () => {
         <ClockDigits value={tensDigit} />
         <ClockDigits value={singleDigit} />
       </div>
-      <button onClick={clickHandler}>Click to trigger useEffect</button>
     </div>
   );
 };
